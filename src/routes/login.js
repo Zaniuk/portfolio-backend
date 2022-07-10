@@ -19,7 +19,7 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET)
     res.set({
       'auth-token': token,
-      'Access-Control-Allow-Origin': 'http://192.168.1.33:3000',
+      'Access-Control-Allow-Origin': 'https://blog.portfolio-f01.pages.dev/',
       'Access-Control-Allow-Credentials': true
     }).send()
   })
