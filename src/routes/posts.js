@@ -2,8 +2,10 @@ const express = require('express')
 const router = express.Router()
 const dotenv = require('dotenv')
 const mongoose = require('mongoose')
+const userValidate = require('./verifyToken')
 const Post = require('../schema/Post')
 dotenv.config()
+const Admin = require('../schema/Admin')
 
 const connectionUrl = process.env.CONNECTION_URL
 mongoose.connect(connectionUrl, (err) => {
@@ -18,7 +20,8 @@ router.get('/posts', (_req, __res)=> {
         })
 })
 
-router.post('/posts', (req, res) => {
+router.post('/posts', userValidate, (req, res) => {
+    
     async function createPost(){
         const request = req.body
         const post = new Post({
