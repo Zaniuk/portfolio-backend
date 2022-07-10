@@ -17,7 +17,10 @@ router.post('/login/', async (req, res) => {
     const validPassword = await bcrypt.compare(req.body.password, user.password)
     if (!validPassword) return res.status(400).send('Email or password is wrong')
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET)
-    res.header('auth-token', token).send(token)
+    res.set({
+      'auth-token': token,
+      'Access-Control-Allow-Origin': 'http://localhost:3000'
+    }).send()
   })
   
   module.exports = router
