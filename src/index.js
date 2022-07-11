@@ -16,7 +16,9 @@ const whitelist = [
     'https://portfolio-f01.pages.dev/',
     'https://blog.portfolio-f01.pages.dev/',
     'portfolio-backend-production-0477.up.railway.app',
-    'http://localhost:3000/login'
+    'https://blog.portfolio-f01.pages.dev/login',
+    'http://localhost:3000/login',
+    'https://portfoliobackendapp.herokuapp.com/'
 ]
 app.use(cors({origin: whitelist}))
 
