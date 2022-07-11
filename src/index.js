@@ -17,7 +17,7 @@ const whitelist = [
     'https://blog.portfolio-f01.pages.dev/',
     'portfolio-backend-production-0477.up.railway.app'
 ]
-app.use(cors({}))
+app.use(cors({origin: whitelist}))
 
 
 app.use(postsRouter)
