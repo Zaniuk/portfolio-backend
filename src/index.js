@@ -10,7 +10,14 @@ const bodyParser = require('body-parser')
 
 const app = express()
 app.use(bodyParser.json())
-app.use(cors())
+const whitelist = [
+    'http://localhost',
+    'http://localhost:3000',
+    'https://portfolio-f01.pages.dev/',
+    'https://blog.portfolio-f01.pages.dev/',
+    'portfolio-backend-production-0477.up.railway.app'
+]
+app.use(cors({}))
 
 
 app.use(postsRouter)
