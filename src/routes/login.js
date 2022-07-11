@@ -21,7 +21,8 @@ router.post('/login', async (req, res) => {
       'auth-token': token,
       // 'Access-Control-Allow-Origin': 'https://blog.portfolio-f01.pages.dev/',
       // 'Access-Control-Allow-Credentials': true
-    }).send()
+    })
+    res.send()
   })
   
   module.exports = router
