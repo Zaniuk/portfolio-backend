@@ -20,7 +20,7 @@ app.use(bodyParser.json())
 //     'http://localhost:3000/login',
 //     'https://portfoliobackendapp.herokuapp.com/'
 // ]
-app.use(cors({origin: 'portfolio-backend-production-0477.up.railway.app'}))
+app.use(cors({origin: 'https://blog.portfolio-f01.pages.dev/'}))
 
 
 app.use(postsRouter)
