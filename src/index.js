@@ -27,6 +27,7 @@ app.use(postsRouter)
 app.use(authRouter)
 
 app.get('/', (_req, res) => {
+  console.log(_req.get('host'))
     res.send('Hola Mundo')
 })
 app.get('/', postsRouter)
