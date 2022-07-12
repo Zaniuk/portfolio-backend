@@ -10,17 +10,17 @@ const bodyParser = require('body-parser')
 
 const app = express()
 app.use(bodyParser.json())
-// const whitelist = [
-//     'http://localhost',
-//     'http://localhost:3000',
-//     'https://portfolio-f01.pages.dev/',
-//     'https://blog.portfolio-f01.pages.dev/',
-//     'portfolio-backend-production-0477.up.railway.app',
-//     'https://blog.portfolio-f01.pages.dev/login',
-//     'http://localhost:3000/login',
-//     'https://portfoliobackendapp.herokuapp.com/'
-// ]
-app.use(cors({origin: 'https://blog.portfolio-f01.pages.dev/'}))
+var whitelist = ['https://blog.portfolio-f01.pages.dev/', 'https://portfolio-f01.pages.dev/']
+var corsOptionsDelegate = function (req, callback) {
+  var corsOptions;
+  if (whitelist.indexOf(req.header('Origin')) !== -1) {
+    corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
+  } else {
+    corsOptions = { origin: false } // disable CORS for this request
+  }
+  callback(null, corsOptions) // callback expects two parameters: error and options
+}
+app.use(cors(corsOptionsDelegate))
 
 
 app.use(postsRouter)
@@ -30,7 +30,7 @@ app.get('/', (_req, res) => {
     res.send('Hola Mundo')
 })
 app.get('/', postsRouter)
-app.get('/', authRouter)
+app.post('/', authRouter)
 app.listen(PORT, (_req, _res)=>{
     console.log('Server Started')
 })

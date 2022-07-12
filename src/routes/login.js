@@ -5,7 +5,7 @@ const { loginValidation } = require('../services/validation')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
-
+const cors = require('cors')
 
 router.post('/login', async (req, res) => {
     const { error } = loginValidation(req.body)
@@ -19,7 +19,6 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET)
     res.set({
       'auth-token': token,
-      'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Credentials': true
     })
     res.send({token})
