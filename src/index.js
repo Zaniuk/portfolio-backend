@@ -10,17 +10,8 @@ const bodyParser = require('body-parser')
 
 const app = express()
 app.use(bodyParser.json())
-var whitelist = ['https://blog.portfolio-f01.pages.dev/', 'https://portfolio-f01.pages.dev/']
-var corsOptionsDelegate = function (req, callback) {
-  var corsOptions;
-  if (whitelist.indexOf(req.header('Origin')) !== -1) {
-    corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
-  } else {
-    corsOptions = { origin: false } // disable CORS for this request
-  }
-  callback(null, corsOptions) // callback expects two parameters: error and options
-}
-app.use(cors(corsOptionsDelegate))
+
+app.use(cors({origin: '*'}))
 
 
 app.use(postsRouter)
@@ -30,6 +21,14 @@ app.get('/', (_req, res) => {
   console.log(_req.get('host'))
     res.send('Hola Mundo')
 })
+
+app.post('/test', (req, _res) =>{
+  console.log(req.get('host'))
+  console.log(req.get('origin'))
+  _res.end()
+})
+
+
 app.get('/', postsRouter)
 app.post('/', cors(), authRouter)
 app.listen(PORT, (_req, _res)=>{
