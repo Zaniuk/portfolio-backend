@@ -30,7 +30,7 @@ app.get('/', (_req, res) => {
     res.send('Hola Mundo')
 })
 app.get('/', postsRouter)
-app.post('/', authRouter)
+app.post('/', cors(), authRouter)
 app.listen(PORT, (_req, _res)=>{
     console.log('Server Started')
 })
