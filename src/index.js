@@ -10,17 +10,17 @@ const bodyParser = require('body-parser')
 
 const app = express()
 app.use(bodyParser.json())
-const whitelist = [
-    'http://localhost',
-    'http://localhost:3000',
-    'https://portfolio-f01.pages.dev/',
-    'https://blog.portfolio-f01.pages.dev/',
-    'portfolio-backend-production-0477.up.railway.app',
-    'https://blog.portfolio-f01.pages.dev/login',
-    'http://localhost:3000/login',
-    'https://portfoliobackendapp.herokuapp.com/'
-]
-app.use(cors({origin: whitelist}))
+// const whitelist = [
+//     'http://localhost',
+//     'http://localhost:3000',
+//     'https://portfolio-f01.pages.dev/',
+//     'https://blog.portfolio-f01.pages.dev/',
+//     'portfolio-backend-production-0477.up.railway.app',
+//     'https://blog.portfolio-f01.pages.dev/login',
+//     'http://localhost:3000/login',
+//     'https://portfoliobackendapp.herokuapp.com/'
+// ]
+app.use(cors({origin: 'https://blog.portfolio-f01.pages.dev/login'}))
 
 
 app.use(postsRouter)

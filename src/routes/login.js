@@ -19,10 +19,10 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET)
     res.set({
       'auth-token': token,
-      // 'Access-Control-Allow-Origin': 'https://blog.portfolio-f01.pages.dev/',
-      // 'Access-Control-Allow-Credentials': true
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': true
     })
-    res.send()
+    res.send({token})
   })
   
   module.exports = router
