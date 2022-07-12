@@ -26,6 +26,7 @@ router.post('/posts', userValidate, (req, res) => {
         const request = req.body
         const post = new Post({
             title: request.title,
+            desc : request.desc,
             body: request.body,
             createdAt: new Date(),
             tags: request.tags,

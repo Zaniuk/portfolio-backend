@@ -19,7 +19,7 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET)
     res.set({
       'auth-token': token,
-      'Access-Control-Allow-Origin': req.originalUrl,
+      'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Credentials': true
     })
     res.send({token})
