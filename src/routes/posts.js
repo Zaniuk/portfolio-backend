@@ -24,24 +24,40 @@ router.post('/posts', userValidate, (req, res) => {
     
     async function createPost(){
         const request = req.body
+        const createSlug = (title) => {
+            if(title[title.length-1] === ' '){
+                title = title.slice(0, title.length-1)
+                return title.toLowerCase().split(' ').join('-')
+            }else{
+                return title.toLowerCase().split(' ').join('-')
+            }
+        }
+        const slug = createSlug(request.title)
         const post = new Post({
             title: request.title,
             desc : request.desc,
             body: request.body,
             createdAt: new Date(),
             tags: request.tags,
-            img: request.img
+            img: request.img,
+            slug: slug
         })
         post.validate((err) => {
             if(err){
                 res.json(err)
             }else{
+                res.set({
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Credentials': true
+                })
                 res.json(post)
                 post.save()
+                res.send()
             }
         })
         
     }
+    
     createPost()
 })
 
