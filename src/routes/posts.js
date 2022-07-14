@@ -20,6 +20,13 @@ router.get('/posts', (_req, __res)=> {
         })
 })
 
+router.get('/posts/:slug', (_req, __res)=> {
+    Post.find({slug: _req.params.slug})
+        .then(res => {
+            __res.json(res)
+        })
+})
+
 router.post('/posts', userValidate, (req, res) => {
     
     async function createPost(){
