@@ -39,6 +39,7 @@ router.post('/posts', userValidate, (req, res) => {
                 return title.toLowerCase().split(' ').join('-')
             }
         }
+        
         const slug = createSlug(request.title)
         const post = new Post({
             title: request.title,

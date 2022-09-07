@@ -7,7 +7,7 @@ dotenv.config()
 const PORT = process.env.PORT || 80
 
 const bodyParser = require('body-parser')
-
+const whiteList = ['http://localhost:3000/', 'https://blog.portfolio-f01.pages.dev/', 'https://portfolio-f01.pages.dev/']
 const app = express()
 app.use(bodyParser.json())
 
