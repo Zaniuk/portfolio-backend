@@ -18,9 +18,7 @@ router.post('/login', async (req, res) => {
     if(user.password == req.body.password){
       const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET)
     res.set({
-      'Autohrization': `Bearer ${token}`,
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Credentials': true
+      'Autohrization': `Bearer ${token}`
     })
     res.send({token})
     }else{

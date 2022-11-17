@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/1a0ed77e-97ab-4743-b8aa-91444232ff4f/AppServices/subscriptions/1a0ed77e-97ab-4743-b8aa-91444232ff4f/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/zaniukblog",
+    "appService.deploySubpath": "."
+}

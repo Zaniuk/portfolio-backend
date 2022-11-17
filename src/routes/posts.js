@@ -54,10 +54,6 @@ router.post('/posts', userValidate, (req, res) => {
             if(err){
                 res.json(err)
             }else{
-                res.set({
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Credentials': true
-                })
                 res.json(post)
                 post.save()
                 res.send()
